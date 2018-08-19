@@ -1,0 +1,58 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = MsPortsApiJwa.bpl MsPortsApiJwaSingleUnits.bpl MsPortsApiDelphi.bpl \
+  MsPortsApiStaticJwa.bpl MsPortsApiStaticJwaSingleUnits.bpl \
+  MsPortsApiStaticDelphi.bpl MsPortsApiAdvancedJwa.bpl \
+  MsPortsApiAdvancedJwaSingleUnits.bpl MsPortsApiAdvancedDelphi.bpl \
+  MsPortsApiAdvancedStaticJwa.bpl MsPortsApiAdvancedStaticJwaSingleUnits.bpl \
+  MsPortsApiAdvancedStaticDelphi.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+MsPortsApiJwa.bpl: d7\MsPortsApiJwa.dpk
+  $(DCC)
+
+MsPortsApiJwaSingleUnits.bpl: d7\MsPortsApiJwaSingleUnits.dpk
+  $(DCC)
+
+MsPortsApiDelphi.bpl: d7\MsPortsApiDelphi.dpk
+  $(DCC)
+
+MsPortsApiStaticJwa.bpl: d7\MsPortsApiStaticJwa.dpk
+  $(DCC)
+
+MsPortsApiStaticJwaSingleUnits.bpl: d7\MsPortsApiStaticJwaSingleUnits.dpk
+  $(DCC)
+
+MsPortsApiStaticDelphi.bpl: d7\MsPortsApiStaticDelphi.dpk
+  $(DCC)
+
+MsPortsApiAdvancedJwa.bpl: d7\MsPortsApiAdvancedJwa.dpk
+  $(DCC)
+
+MsPortsApiAdvancedJwaSingleUnits.bpl: d7\MsPortsApiAdvancedJwaSingleUnits.dpk
+  $(DCC)
+
+MsPortsApiAdvancedDelphi.bpl: d7\MsPortsApiAdvancedDelphi.dpk
+  $(DCC)
+
+MsPortsApiAdvancedStaticJwa.bpl: d7\MsPortsApiAdvancedStaticJwa.dpk
+  $(DCC)
+
+MsPortsApiAdvancedStaticJwaSingleUnits.bpl: d7\MsPortsApiAdvancedStaticJwaSingleUnits.dpk
+  $(DCC)
+
+MsPortsApiAdvancedStaticDelphi.bpl: d7\MsPortsApiAdvancedStaticDelphi.dpk
+  $(DCC)
+
+
