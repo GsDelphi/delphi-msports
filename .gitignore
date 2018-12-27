@@ -37,6 +37,7 @@
 *.drc
 *.map
 *.dres
+*.dsm
 *.rsm
 *.tds
 *.dcu
