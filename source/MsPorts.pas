@@ -38,8 +38,9 @@
 
 unit MsPorts;
 
+{$I gsdl.inc}
 {.$DEFINE SERIAL_STATIC_LINK}
-{.$DEFINE SERIAL_USE_DELPHI_TYPES}
+{$DEFINE SERIAL_USE_DELPHI_TYPES}
 {.$DEFINE SERIAL_USE_JWA_SINLGE_UNITS}
 {.$DEFINE SERIAL_ADVANCED_SETTINGS}
 
@@ -399,17 +400,17 @@ resourcestring
   SEFunctionNotFound = 'Function not found: %0:s.%1:s';
   SEFunctionNotFound2 = 'Function not found: %0:s.%1:d';
 
-procedure GetProcedureAddress(var P: Pointer; const ModuleName, ProcName: Ansistring);
+procedure GetProcedureAddress(var P: Pointer; const ModuleName, ProcName: AnsiString);
   overload;
 var
   ModuleHandle: HMODULE;
 begin
   if not Assigned(P) then
   begin
-    ModuleHandle := GetModuleHandle(PAnsiChar(Ansistring(ModuleName)));
+    ModuleHandle := GetModuleHandleA(PAnsiChar(ModuleName));
     if ModuleHandle = 0 then
     begin
-      ModuleHandle := LoadLibrary(PAnsiChar(ModuleName));
+      ModuleHandle := LoadLibraryA(PAnsiChar(ModuleName));
       if ModuleHandle = 0 then
         raise ELoadLibraryError.CreateFmt(SELibraryNotFound, [ModuleName]);
     end;
@@ -419,17 +420,17 @@ begin
   end;
 end;
 
-procedure GetProcedureAddress(var P: Pointer; const ModuleName: Ansistring;
+procedure GetProcedureAddress(var P: Pointer; const ModuleName: AnsiString;
   ProcNumber: Cardinal); overload;
 var
   ModuleHandle: HMODULE;
 begin
   if not Assigned(P) then
   begin
-    ModuleHandle := GetModuleHandle(PAnsiChar(Ansistring(ModuleName)));
+    ModuleHandle := GetModuleHandleA(PAnsiChar(ModuleName));
     if ModuleHandle = 0 then
     begin
-      ModuleHandle := LoadLibrary(PAnsiChar(ModuleName));
+      ModuleHandle := LoadLibraryA(PAnsiChar(ModuleName));
       if ModuleHandle = 0 then
         raise ELoadLibraryError.CreateFmt(SELibraryNotFound, [ModuleName]);
     end;
@@ -442,6 +443,7 @@ end;
 
   {$ENDIF SERIAL_USE_DELPHI_TYPES}
 
+{$WARN NO_RETVAL OFF}
 
   {$IFDEF SERIAL_ADVANCED_SETTINGS}
 
